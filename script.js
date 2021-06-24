@@ -10,11 +10,17 @@ function buildTimeblocks() {
         tblBody.append(`
             <tr class="time-block-row">
                 <td class="hour">${timeIds[i]}</td>
-                <td class="time-block">Events</td>
+                <td class="time-block" contenteditable="true">Events</td>
                 <td class="saveBtn"><i class="fas fa-save"></i></td>
             </tr>`
         );
     }
+
+    $(".saveBtn").on("click", function() {
+        console.log("save this");
+    });
 }
+
+
 
 init();
