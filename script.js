@@ -1,5 +1,8 @@
+var currentDate = moment();
+
 function init() {
     buildTimeblocks();
+    $("#currentDay").append(currentDate.format("dddd, MMMM Do"));
 }
 
 function buildTimeblocks() {
@@ -20,7 +23,5 @@ function buildTimeblocks() {
         console.log("save this");
     });
 }
-
-
 
 init();
