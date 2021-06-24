@@ -13,7 +13,7 @@ function buildTimeblocks() {
 
     for(var i = 0; i < timeIds.length; i++){
         var timeBlockEvent = currentEvents[timeIds[i]] || "";
-        var colorClass = "past";
+        var colorClass = "future";
 
         var timeBlockStartTime = moment(timeIds[i], "h a");
         var timeBlockEndTime = moment(timeIds[i + 1], "h a").add(-1, 'second');
@@ -21,7 +21,7 @@ function buildTimeblocks() {
         if (currentDate >= timeBlockStartTime && currentDate < timeBlockEndTime) {
             colorClass = "present";
         } else if (currentDate >= timeBlockEndTime) {
-            colorClass = "future";
+            colorClass = "past";
         }
 
 
