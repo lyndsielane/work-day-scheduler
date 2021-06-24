@@ -26,7 +26,6 @@ function buildTimeblocks() {
         var eventEntry = $(this).parent().find(".time-block").text()
         console.log(eventEntry);
     });
-
 }
 
 init();
