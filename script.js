@@ -1,7 +1,5 @@
 var currentDate = moment();
-var userTime = moment().local();
-var saveEvent = localStorage.getItem("savedEvent");
-var eventTime = localStorage.getItem("eventTime")
+var UserTime = moment().local();
 
 function init() {
     buildTimeblocks();
@@ -22,14 +20,13 @@ function buildTimeblocks() {
         );
     }
 
-    //pull the userTime into the timeIds... somehow
+    //pull the userTime into the timeIds...
 
     $(".saveBtn").on("click", function(event) {
         var eventEntry = $(this).parent().find(".time-block").text()
-        localStorage.setItem("savedEvent", eventEntry);
-    $(".saveBtn").on("click", function() {
-        console.log("save this");
+        console.log(eventEntry);
     });
+
 }
 
 init();
