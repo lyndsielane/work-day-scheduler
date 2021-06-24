@@ -27,8 +27,9 @@ function buildTimeblocks() {
     $(".saveBtn").on("click", function(event) {
         var eventEntry = $(this).parent().find(".time-block").text()
         localStorage.setItem("savedEvent", eventEntry);
+    $(".saveBtn").on("click", function() {
+        console.log("save this");
     });
-
 }
 
 init();
