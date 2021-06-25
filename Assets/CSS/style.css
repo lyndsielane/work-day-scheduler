@@ -33,19 +33,23 @@ textarea {
   color: black;
 }
 
+.time-block ::selection {
+  border: 5px solid ff6961;
+} 
+
 .time-block-row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;
+  border-top: 1px inset white;
 }
 
 .hour {
   background-color: #ffffff;
   color: #000000;
-  border-top: 1px dashed #000000;
+  border-top: 1px dotted slategray;
   text-align: right;
   width: 75px;
-  border-right: 1px solid #000;
+  border-right: 5px double gray;
 }
 
 .past {
@@ -68,7 +72,7 @@ textarea {
   color: white;
   text-align: center;
   width: 75px;
-  border-left: 1px solid #000;
+  border-left: 5px double gray;
   vertical-align: middle !important;
 }
 
