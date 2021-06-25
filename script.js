@@ -1,29 +1,39 @@
 var currentDate = moment();
-var UserTime = moment().local();
+var currentDateFormatted = currentDate.format("dddd, MMMM Do, YYYY");
+var localStorageName = "myEvents";
 
 function init() {
     buildTimeblocks();
-    $("#currentDay").append(currentDate.format("dddd, MMMM Do"));
+    $("#currentDay").append(currentDateFormatted);
+}
+
+function getSavedEvents() {
+    var currentEvents = JSON.parse(localStorage.getItem(localStorageName) || "{}");
+
+    if (!currentEvents[currentDateFormatted]) {
+        currentEvents[currentDateFormatted] = {};
+    }
+
+    return currentEvents;
 }
 
 function buildTimeblocks() {
     var tblBody = $('#timeblocks tbody');
     var timeIds = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM"];
-    var currentEvents = JSON.parse(localStorage.getItem("myEvents") || "{}");
+    var currentEvents = getSavedEvents();
 
     for(var i = 0; i < timeIds.length; i++){
-        var timeBlockEvent = currentEvents[timeIds[i]] || "";
+        var timeBlockEvent = currentEvents[currentDateFormatted][timeIds[i]] || "";
         var colorClass = "future";
 
         var timeBlockStartTime = moment(timeIds[i], "h a");
-        var timeBlockEndTime = moment(timeIds[i + 1], "h a").add(-1, 'second');
+        var timeBlockEndTime = moment(timeIds[i], "h a").add(1, 'hour').add(-1, 'second');
 
-        if (currentDate >= timeBlockStartTime && currentDate < timeBlockEndTime) {
+        if (currentDate >= timeBlockStartTime && currentDate <= timeBlockEndTime) {
             colorClass = "present";
         } else if (currentDate >= timeBlockEndTime) {
             colorClass = "past";
         }
-
 
         tblBody.append(`
             <tr class="time-block-row">
@@ -39,11 +49,11 @@ function buildTimeblocks() {
     $(".saveBtn").on("click", function(event) {
         var eventEntry = $(this).parent().find(".time-block").text();
         var hour = $(this).parent().find(".hour").text();
-        var currentEvents = JSON.parse(localStorage.getItem("myEvents") || "{}");
+        var currentEvents = getSavedEvents();
 
-        currentEvents[hour] = eventEntry;
+        currentEvents[currentDateFormatted][hour] = eventEntry;
         
-        localStorage.setItem("myEvents", JSON.stringify(currentEvents));
+        localStorage.setItem(localStorageName, JSON.stringify(currentEvents));
 
     });
 }
