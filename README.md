@@ -8,6 +8,6 @@
 * Any information entered can be removed by selecting the text, deleting, and pressing the save button again. 
 * The time and date data is pulled in so that the page resets the following day and presents the user with an empty slate to begin again. The current year is attached to the date to ensure no events saved this year pull through to the next.
 
-The app is deployed at 
+The app is deployed at https://lyndsielane.github.io/work-day-scheduler/ 
 
 ![page preview](https://github.com/lyndsielane/work-day-scheduler/blob/main/Assets/127.0.0.1_5500_index.html%20(1).png?raw=true)
